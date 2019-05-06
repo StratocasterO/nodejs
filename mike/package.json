@@ -1,0 +1,27 @@
+{
+  "name": "mike",
+  "version": "1.0.0",
+  "description": "proyecto de prueba",
+  "main": "hola-mundo.js",
+  "scripts": {
+    "test": "amor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StratocasterO/nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "curso",
+    "pablo",
+    "monteserin",
+    "tadel",
+    "formacio"
+  ],
+  "author": "Omar Olmedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StratocasterO/nodejs/issues"
+  },
+  "homepage": "https://github.com/StratocasterO/nodejs#readme"
+}

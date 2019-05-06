@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+
+@font-face{
+	font-family: miFuente;
+	src:url(fuente.ttf)	
+}
+body{
+	margin: 0;
+}
+.barra{
+	background-color: #C0C0C0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.triangulo{
+	background-color: white; 
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 20px 20px 0 20px;
+	border-color: #c0c0c0 transparent transparent transparent; 
+	margin-left: 350px; 
+	padding-left: 50px;
+}
+.cont{
+	width: 800px;
+	margin: auto;
+	padding-left: 40px;
+}
+p{
+	font-family: Verdana;
+	padding-left: 30px;
+}
+a{
+	text-decoration: none;
+	color: #4350D4
+}
+pre{
+	font-family: Verdana;
+	padding-left: 30px;
+}
+
+ul{
+	font-family: Verdana; 
+}
+
+ol{
+	font-family: Verdana; 
+}
+
+h3{
+	font-family: Verdana;
+}
+div.code{
+	background: #DADADA; 
+	width: 60%;
+	padding-left: 30px
+}
+code{
+	font-family: courier new
+}
+.fuente{
+	font-family: miFuente;
+}
+div.cambio{
+	font-family: Verdana;
+	padding-left: 30px;
+	background: #DADADA;
+	margin-left: 30px;
+	width: 60%;
+	padding-left: 30px;
+	margin-left: 30px;
+	padding-bottom: 1em;
+}
+div.cambio:hover{
+	background-color: #FFBABA;
+}
+span.b{
+	font-weight: bold;
+}
+span.i{
+	font-style: italic;
+}
+span.ul{
+	text-decoration: underline;
+}
+span.vers{
+	font-variant: small-caps;
+	font-size: 1.1em;
+}
+/*@media screen and (max-width:1100px) {
+	.cont{
+	width: 800px;
+	}
+}*/
