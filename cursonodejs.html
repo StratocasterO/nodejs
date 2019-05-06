@@ -6,6 +6,12 @@
 	<title>Curso Node.js</title>
 	<link rel="stylesheet" type="text/css" href="estilocurso.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+	<style>
+		code{
+			background-color: lightgray;
+		}
+	</style>
 </head>
 <body>
 	<div class="barra">
@@ -22,6 +28,8 @@
 			<li><a href="#contacto">Contacto y enlaces al curso</a></li>
 			<li><a href="#recursos">Recursos Node.js</a></li>
 			<li><a href="#otros">Otros recursos</a></li>
+			<li><a href="#comandos">Comandos básicos</a></li>
+			<li><a href="#paquetes">Paquetes instalados</a></li>
 			<li><a href="#prueba">Pruebas y ejercicios</a></li>
 		</ul><br>
 
@@ -47,6 +55,20 @@
 		<p>
 			<a href="https://git-scm.com/">GIT</a>: instalador para usar GitHub y similares <br>
 		</p><br>
+		<p><a href="#indice">Volver al índice</a></p><br>
+
+		<h3 id="comandos">Comandos básicos</h3>
+		<p><code>node</code> sirve para ejecutar cualquier archivo en el servidor.</p>
+		<p><code>node init</code> inicializa un nuevo proyecto en la carpeta en la que estamos trabajando.</p>
+		<p><code>npm i</code> o <code>npm install</code> sirven para instalar paquetes (librerías) en el proyecto. Se puede poner el nombre del paquete a continuación o meterlos en el apartado <i>dependences</i> del <i>json</i> (<u>J</u>ava<u>s</u>cript <u>O</u>bject <u>N</u>otation) que se genera al inicializar el proyecto. Si añadimos <code>--g</code> al final del comando, el paquete se instala en el sistema operativo en lugar de en el proyecto, permitiendo usarlo desde cualquier proyecto.</p>
+		<p></p>
+		<br>
+		<p><a href="#indice">Volver al índice</a></p><br>
+
+		<h3 id="paquetes">Paquetes instalados</h3>
+
+		<p><code>express-generator --g</code>. Lo usaremos con <code>express amor --hbs</code> para crear un proyecto llamado <i>amor</i> (el <code>--hbs</code> indica que hay librerías que hay que instalar con <code>npm install</code>.</p>
+		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
 
 		<h3 id="prueba">Pruebas y ejercicios</h3>
