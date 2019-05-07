@@ -46,7 +46,8 @@
 		<h3 id="recursos">Recursos Node.js</h3>
 		<p>
 			<a href="https://www.w3schools.com/nodejs/">w3c Schools</a>: curso de W3C de Node.js <br>
-			<a href="https://www.apachefriends.org/es/index.html">Xampp</a>: servidor para recuperar datos de un <i>.jsom</i><br>
+			<a href="https://nodejs.org/es/download/">Descarga Node.js</a>: para instalar Node.js en el ordenador <br>
+			<a href="https://www.apachefriends.org/es/index.html">Xampp</a>: para montar un servidor local<br>
 		</p><br>
 
 		<p><a href="#indice">Volver al índice</a></p><br>
@@ -58,16 +59,24 @@
 		<p><a href="#indice">Volver al índice</a></p><br>
 
 		<h3 id="comandos">Comandos básicos</h3>
+
+		<p>Usaremos la consola de GitHub para ejecutar los comandos directamente desde la carpeta de origen:</p>
+
 		<p><code>node</code> sirve para ejecutar cualquier archivo en el servidor.</p>
+
 		<p><code>node init</code> inicializa un nuevo proyecto en la carpeta en la que estamos trabajando.</p>
+
 		<p><code>npm i</code> o <code>npm install</code> sirven para instalar paquetes (librerías) en el proyecto. Se puede poner el nombre del paquete a continuación o meterlos en el apartado <i>dependences</i> del <i>json</i> (<u>J</u>ava<u>s</u>cript <u>O</u>bject <u>N</u>otation) que se genera al inicializar el proyecto. Si añadimos <code>--g</code> al final del comando, el paquete se instala en el sistema operativo en lugar de en el proyecto, permitiendo usarlo desde cualquier proyecto.</p>
-		<p></p>
+
+		<p><code>npm start</code> arranca el proyecto desde el que hayamos ejecutado la consola. Accederemos a la aplicación escribiendo <i>localhost:3000</i> en la barra del navegador (3000 es el puerto por defecto, que se puede consultar en el archivo <i>www</i> de la carpeta <i>bin</i>).</p>
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
 
 		<h3 id="paquetes">Paquetes instalados</h3>
 
-		<p><code>express-generator --g</code>. Lo usaremos con <code>express amor --hbs</code> para crear un proyecto llamado <i>amor</i> (el <code>--hbs</code> indica que hay librerías que hay que instalar con <code>npm install</code>.</p>
+		<p><code>npm install express-generator --g</code>. Lo usaremos con <code>express amor --hbs</code> para crear un proyecto llamado <i>amor</i> (el <code>--hbs</code> indica que hay librerías que hay que instalar con <code>npm install</code>.</p>
+
+		<p><code>npm install --save nodemon</code>. Sirve para reiniciar el servidor cada vez que guardemos un cambio en un archivo, así no hay que reiniciarlo manualmente.</p>
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
 
