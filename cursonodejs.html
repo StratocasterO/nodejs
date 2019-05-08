@@ -111,8 +111,49 @@
 
 		<h3 id="rutas">Enrutamiento</h3>
 		<p>
-			
-		</p><br>
+			Los archivos de enrutamiento están contenidos en la carpeta <i>routes</i> y tienen que estár referenciados en el archivo <i>app.js</i> con el código siguiente:
+		</p>
+		<pre><div class="code">
+<span class="text">var ejemploRouter = require('./routes/ejemplo');
+app.use('/ejemplo', ejemploRouter);</span>
+			</div></pre>
+		<p>Dentro del archivo enrutador están definidas las diferentes urls a las que hace referencia con el siguiente formato:</p>
+		<pre><div class="code">
+<span class="text">var express = require('express');
+var router = express.Router();
+
+router.get('/', function(req, res, next) {
+  res.render('ejemplos');
+});
+
+router.get('/amor', function(req, res, next) {
+  res.render('index', {title: 'Amor'});
+});
+
+router.get('/omar', function(req, res, next) {
+  res.send('Omar Olmedo Ferrer');
+});
+
+router.get('/libros', function(req, res, next) {
+  const biblioteca = [
+    {
+      "titulo": "La Aventura",
+      "autor": "Paco"
+    },
+    {
+      "titulo":"Las Cosas",
+      "autor": "Pepe"
+    }
+  ];
+  res.send(biblioteca);
+});
+
+module.exports = router;</span>
+		</div></pre>
+		<p>El método <i>res.render(view,{data: "thing"})</i> carga la vista <i>view</i> de la carpeta <i>views</i> y la variable <i>{data: "thing"}</i> envía datos que se pueden referenciar usando <i>{{data}}</i> en la vista, que mostrará <i>thing</i>.</p>
+		<p>El método <i>res.send()</i> se usa para enviar directamente al navegador lo que contenga, sea texto, números, variables, objetos, etc.</p>
+		<p>A las páginas enrutadas en el ejemplo anterior se accederia desde las urls <i>localhost:3000/ejemplos</i>, <i>localhost:3000/ejemplos/amor</i>, <i>localhost:3000/ejemplos/omar</i> y <i>localhost:3000/ejemplos/libros</i>, respectivamente.</p>
+		<br>
 
 		<p><a href="#indice">Volver al índice</a></p><br>
 
