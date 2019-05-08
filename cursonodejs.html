@@ -29,6 +29,8 @@
 			<li><a href="#recursos">Recursos Node.js</a></li>
 			<li><a href="#otros">Otros recursos</a></li>
 			<li><a href="#comandos">Comandos básicos</a></li>
+			<li><a href="#inicio">Iniciar un servidor</a></li>
+			<li><a href="#rutas">Enrutamiento</a></li>
 			<li><a href="#paquetes">Paquetes instalados</a></li>
 			<li><a href="#prueba">Pruebas y ejercicios</a></li>
 		</ul><br>
@@ -43,20 +45,26 @@
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
 
+
+
 		<h3 id="recursos">Recursos Node.js</h3>
 		<p>
 			<a href="https://www.w3schools.com/nodejs/">w3c Schools</a>: curso de W3C de Node.js <br>
 			<a href="https://nodejs.org/es/download/">Descarga Node.js</a>: para instalar Node.js en el ordenador <br>
-			<a href="https://www.apachefriends.org/es/index.html">Xampp</a>: para montar un servidor local<br>
 		</p><br>
 
 		<p><a href="#indice">Volver al índice</a></p><br>
+
+
 
 		<h3 id="recursos">Otros recursos</h3>
 		<p>
 			<a href="https://git-scm.com/">GIT</a>: instalador para usar GitHub y similares <br>
+			<a href="https://www.apachefriends.org/es/index.html">Xampp</a>: para montar un servidor local<br>
 		</p><br>
 		<p><a href="#indice">Volver al índice</a></p><br>
+
+
 
 		<h3 id="comandos">Comandos básicos</h3>
 
@@ -66,24 +74,63 @@
 
 		<p><code>node init</code> inicializa un nuevo proyecto en la carpeta en la que estamos trabajando.</p>
 
-		<p><code>npm i</code> o <code>npm install</code> sirven para instalar paquetes (librerías) en el proyecto. Se puede poner el nombre del paquete a continuación o meterlos en el apartado <i>dependences</i> del <i>json</i> (<u>J</u>ava<u>s</u>cript <u>O</u>bject <u>N</u>otation) que se genera al inicializar el proyecto. Si añadimos <code>--g</code> al final del comando, el paquete se instala en el sistema operativo en lugar de en el proyecto, permitiendo usarlo desde cualquier proyecto.</p>
+		<p><code>npm i</code> o <code>npm install</code> sirven para instalar paquetes (librerías) en el proyecto. Se puede poner el nombre del paquete a continuación o meterlos en el apartado <i>dependences</i> del <i>package.json</i> (el archivo de configuración del proyecto con formato <u>J</u>ava<u>s</u>cript <u>O</u>bject <u>N</u>otation) que se genera al inicializar el proyecto. Si añadimos <code>--g</code> al final del comando, el paquete se instala en el sistema operativo en lugar de en el proyecto, permitiendo usarlo desde cualquier proyecto.</p>
 
 		<p><code>npm start</code> arranca el proyecto desde el que hayamos ejecutado la consola. Accederemos a la aplicación escribiendo <i>localhost:3000</i> en la barra del navegador (3000 es el puerto por defecto, que se puede consultar en el archivo <i>www</i> de la carpeta <i>bin</i>).</p>
+
+		<p><code>express nombre-del-proyecto --hbs</code> crea un proyecto nuevo usando el paquete <i>Express</i> (más información sobre el paquete abajo).</p>
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
+
+
+
+		<h3 id="inicio">Iniciar un servidor</h3>
+		
+		<p>Los pasos para iniciar un servidor con Node.js son los siguientes:</p>
+		<ol style="padding-left: 70px;">
+			<li>Crear el proyecto con <code>express nombre-del-proyecto --hbs</code>.</li>
+			<li>Cambiar a la carpeta del proyecto con <code>cd nombre-del-proyecto</code>.</li>
+			<li>Instalar los paquetes predefinidos por <i>Express</i> con <code>npm install</code>.</li>
+			<li>Instalar el paquete <i>Nodemon</i> con <code>npm install nodemon</code></li>
+			<li>Cambiar la línea <span class="text">"start": "node ./bin/www"</span> por <span class="text">"start": "nodemon ./bin/www"</span> en el archivo <i>package.json</i>.</li>
+			<li>Iniciar el servidor con <code>npm start</code>.</li>
+			<li>Acceder al servidor escribiendo <span class="text">localhost:3000</span> en la barra de direcciones del navegador.</li>
+		</ol>
+		<p>Posibles errores:</p> 
+		<ul style="padding-left: 70px;">
+			<li><i>El puerto 3000 está ocupado</i>: hay que cambiar el puerto en el archivo <i>www</i> de la carpeta <i>bin</i>.</li>
+			<li><i>No se encuentra el paquete XXX</i>: no se han instalado los paquetes (paso 3).</li>
+		</ul>
+		<p>El servidor iniciado con el paquete <i>Nodemon</i> se cierra con <code>npm stop</code>.</p>
+
+		<br>
+
+		<p><a href="#indice">Volver al índice</a></p><br>
+
+
+
+		<h3 id="rutas">Enrutamiento</h3>
+		<p>
+			
+		</p><br>
+
+		<p><a href="#indice">Volver al índice</a></p><br>
+
+
 
 		<h3 id="paquetes">Paquetes instalados</h3>
 
-		<p><code>npm install express-generator --g</code>. Lo usaremos con <code>express amor --hbs</code> para crear un proyecto llamado <i>amor</i> (el <code>--hbs</code> indica que hay librerías que hay que instalar con <code>npm install</code>.</p>
+		<p><code>npm install express-generator</code> (instalado globalmente). Lo usaremos con <code>express amor --hbs</code> para crear un proyecto llamado <i>amor</i> (el <code>--hbs</code> indica que hay librerías que hay que instalar con <code>npm install</code>.</p>
 
-		<p><code>npm install --save nodemon</code>. Sirve para reiniciar el servidor cada vez que guardemos un cambio en un archivo, así no hay que reiniciarlo manualmente.</p>
+		<p><code>npm install nodemon</code>. Sirve para reiniciar el servidor cada vez que guardemos un cambio en un archivo, así no hay que reiniciarlo manualmente. Hay que cambiar la línea <span class="text">"start": "node ./bin/www"</span> por <span class="text">"start": "nodemon ./bin/www"</span> en el archivo <i>package.json</i>.</p>
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
+
+
 
 		<h3 id="prueba">Pruebas y ejercicios</h3>
 		<p>
 			<a href=""></a>
-
 		</p>
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>

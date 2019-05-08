@@ -60,6 +60,9 @@ div.code{
 code{
 	font-family: courier new
 }
+span.text{
+	font-family: courier new
+}
 .fuente{
 	font-family: miFuente;
 }
