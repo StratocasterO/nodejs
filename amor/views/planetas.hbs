@@ -1,0 +1,7 @@
+<h1>{{titulo}}</h1>
+<p>Lista de planetas referenciados en la <a href="https://swapi.co/">API de Star Wars</a>:</p>
+<ul>
+    {{#each planetas.results}}
+        <li>Nombre: {{name}}, diametro: {{diameter}} km, población: {{population}} habitantes</li>
+    {{/each}}
+</ul>

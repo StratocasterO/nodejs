@@ -20,6 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// permite el acceso desde cualquier URL (para no hacerlo en cada petición)
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+}); 
+
+// lista de enrutadores
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/ejemplos', ejemplosRouter);

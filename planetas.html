@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="amor/public/stylesheets/style.css">
+
+<h1>Planetas del universo Star Wars</h1>
+<p>Lista de planetas referenciados en la <a href="https://swapi.co/">API de Star Wars</a>:</p>
+
+<ul></ul>
+
+<script>
+	contenido = '';
+
+	fetch('http://localhost:3000/ejemplos/planetas_json')
+	.then(res => res.json())
+	.then(res => {
+		res.results.forEach(obj => {
+			contenido += `<li>Nombre: ${obj.name}, diametro: ${obj.diameter} km, población: ${obj.population} habitantes</li>`
+		});
+		document.querySelector("ul").innerHTML = contenido;
+	});
+</script>

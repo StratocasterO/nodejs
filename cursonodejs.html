@@ -101,7 +101,7 @@
 			<li><i>El puerto 3000 está ocupado</i>: hay que cambiar el puerto en el archivo <i>www</i> de la carpeta <i>bin</i>.</li>
 			<li><i>No se encuentra el paquete XXX</i>: no se han instalado los paquetes (paso 3).</li>
 		</ul>
-		<p>El servidor iniciado con el paquete <i>Nodemon</i> se cierra con <code>npm stop</code>.</p>
+		<p>El servidor iniciado con el paquete <i>Nodemon</i> se cierra con <code>npm stop</code> o haciendo <i>Ctrl+C</i>.</p>
 
 		<br>
 
@@ -113,11 +113,14 @@
 		<p>
 			Los archivos de enrutamiento están contenidos en la carpeta <i>routes</i> y tienen que estár referenciados en el archivo <i>app.js</i> con el código siguiente:
 		</p>
+
 		<pre><div class="code">
 <span class="text">var ejemploRouter = require('./routes/ejemplo');
 app.use('/ejemplo', ejemploRouter);</span>
 			</div></pre>
+
 		<p>Dentro del archivo enrutador están definidas las diferentes urls a las que hace referencia con el siguiente formato:</p>
+
 		<pre><div class="code">
 <span class="text">var express = require('express');
 var router = express.Router();
@@ -151,10 +154,16 @@ router.get('/libros', function(req, res, next) {
 module.exports = router;</span>
 		</div></pre>
 		<p>El método <i>res.render(view,{data: "thing"})</i> carga la vista <i>view</i> de la carpeta <i>views</i> y la variable <i>{data: "thing"}</i> envía datos que se pueden referenciar usando <i>{{data}}</i> en la vista, que mostrará <i>thing</i>.</p>
-		<p>El método <i>res.send()</i> se usa para enviar directamente al navegador lo que contenga, sea texto, números, variables, objetos, etc.</p>
-		<p>A las páginas enrutadas en el ejemplo anterior se accederia desde las urls <i>localhost:3000/ejemplos</i>, <i>localhost:3000/ejemplos/amor</i>, <i>localhost:3000/ejemplos/omar</i> y <i>localhost:3000/ejemplos/libros</i>, respectivamente.</p>
-		<br>
 
+		<p>El método <i>res.send(thing)</i> se usa para enviar directamente al navegador lo que contenga, sea texto, números, variables, objetos, etc.</p>
+
+		<p>Para obtener el contenido de un archivo se usa el método <i>require("ruta_del_archivo")</i>.</p>
+
+		<p>A las páginas enrutadas en el ejemplo anterior se accederia desde las urls <i>localhost:3000/ejemplos</i>, <i>/amor</i>, <i>/omar</i> y <i>/libros</i>, respectivamente.</p>
+
+		<p>A los archivos de la carpeta <i>public</i> se puede acceder directamente desde la raíz. Por ejemplo, se puede acceder directamente a la imagen <i>amor.png</i> de la carpeta <i>public/images</i> escribiendo <i>localhost:3000/images/amor.png</i>.</p>
+
+		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
 
 
@@ -171,7 +180,7 @@ module.exports = router;</span>
 
 		<h3 id="prueba">Pruebas y ejercicios</h3>
 		<p>
-			<a href=""></a>
+			<a href="planetas.html">Planetas</a>: página que coge datos de un <i>.json</i> contenido en el servidor
 		</p>
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
