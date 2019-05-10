@@ -12,7 +12,7 @@
 	.then(res => res.json())
 	.then(res => {
 		res.results.forEach(obj => {
-			contenido += `<li>Nombre: ${obj.name}, diametro: ${obj.diameter} km, población: ${obj.population} habitantes</li>`
+			contenido += `<li>Nombre: ${obj.name}, diámetro: ${obj.diameter} km, población: ${obj.population} habitantes</li>`
 		});
 		document.querySelector("ul").innerHTML = contenido;
 	});

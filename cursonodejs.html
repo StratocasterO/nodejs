@@ -31,6 +31,7 @@
 			<li><a href="#comandos">Comandos básicos</a></li>
 			<li><a href="#inicio">Iniciar un servidor</a></li>
 			<li><a href="#rutas">Enrutamiento</a></li>
+			<li><a href="#servidor">Interacción con bases de datos</a></li>
 			<li><a href="#paquetes">Paquetes instalados</a></li>
 			<li><a href="#prueba">Pruebas y ejercicios</a></li>
 		</ul><br>
@@ -60,7 +61,7 @@
 		<h3 id="recursos">Otros recursos</h3>
 		<p>
 			<a href="https://git-scm.com/">GIT</a>: instalador para usar GitHub y similares <br>
-			<a href="https://www.apachefriends.org/es/index.html">Xampp</a>: para montar un servidor local<br>
+			<a href="https://www.apachefriends.org/es/index.html">Xampp</a>: para montar un servidor local (para las bases de datos MySQL)<br>
 		</p><br>
 		<p><a href="#indice">Volver al índice</a></p><br>
 
@@ -168,11 +169,22 @@ module.exports = router;</span>
 
 
 
+		<h3 id="servidor">Interacción con bases de datos</h3>
+		<p>Servidor MySQL en Xampp</p>
+		<p>Acceso del servidor a la base de datos + CODIGO</p>
+		<p>Añadir una entrada a la base de datos + CODIGO</p>
+		<br>
+		<p><a href="#indice">Volver al índice</a></p><br>
+
+
+
 		<h3 id="paquetes">Paquetes instalados</h3>
 
 		<p><code>npm install express-generator</code> (instalado globalmente). Lo usaremos con <code>express amor --hbs</code> para crear un proyecto llamado <i>amor</i> (el <code>--hbs</code> indica que hay librerías que hay que instalar con <code>npm install</code>.</p>
 
 		<p><code>npm install nodemon</code>. Sirve para reiniciar el servidor cada vez que guardemos un cambio en un archivo, así no hay que reiniciarlo manualmente. Hay que cambiar la línea <span class="text">"start": "node ./bin/www"</span> por <span class="text">"start": "nodemon ./bin/www"</span> en el archivo <i>package.json</i>.</p>
+
+		<p><code>npm install mysql</code>. Instala el sistema de gestión de bases de datos MySQL</p>
 		<br>
 		<p><a href="#indice">Volver al índice</a></p><br>
 
