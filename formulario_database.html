@@ -1,0 +1,171 @@
+<style>
+	body{
+		padding: 30px;
+		font-family: Arial;
+	}
+	label{
+		width: 80;
+		display: inline-block;
+		height: 1.5em;
+		padding-left: 20px;
+	}
+	p{
+		font-size: 1.2em;
+	}
+	.res{
+		font-size: 1em;
+		padding-left: 20px;
+	}
+	.res2{
+		color: gray;
+		padding-left: 20pxpx;
+	}
+	.cont{
+		width: 650px;
+		margin: auto;
+		padding: 20px;
+		padding-left: 50px;
+		border: 1px solid black;
+	}
+</style>
+<h2 style="text-align: center">Alta, baja y modificación de entradas en una base de datos</h2>
+<div class="cont">
+	<p>Selecciona los valores que quieres añadir a la base de datos:</p>
+	
+	<form>
+		<label for="escala">Escala</label><select id="escala">
+			<option value="mayor">Mayor</option>
+			<option value="menor">Menor natural</option>
+			<option value="menor_har">Menor harmónica</option>
+			<option value="menor_mel">Menor melódica</option>
+		</select><br>
+		<label for="grado">Grado</label><select id="grado">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select><br>
+		<label for="modo">Modo</label><input id="modo" type="text"><br>
+		<label for="acorde">Acorde</label><input id="acorde" type="text"><br>
+		<input style="margin-left: 100px" type="button" id="enviar" value="Enviar">
+	</form>
+	<br>
+	
+	<p>Selecciona los valores que quieres modificar de la base de datos:</p>
+	
+	<form>
+		<label for="id">ID</label><input type="text" id="codigo"><br>
+		<label for="escala">Escala</label><select id="escala2">
+			<option value="mayor">Mayor</option>
+			<option value="menor">Menor natural</option>
+			<option value="menor_har">Menor harmónica</option>
+			<option value="menor_mel">Menor melódica</option>
+		</select><br>
+		<label for="grado">Grado</label><select id="grado2">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select><br>
+		<label for="modo">Modo</label><input id="modo2" type="text"><br>
+		<label for="acorde">Acorde</label><input id="acorde2" type="text"><br>
+		<input style="margin-left: 100px" type="button" id="modificar" value="Modificar">
+	</form>
+	<br>
+	
+	<p>Selecciona una ID de la base de datos para borrarlo:</p>
+	
+	<form>
+		<label for="id">ID</label><input type="text" id="codigo2"><br>
+		<input style="margin-left: 100px" type="button" id="borrar" value="Borrar">
+	</form>
+</div><br>
+
+<h2 style="text-align: center">Consulta de entradas en una base de datos</h2>
+
+<div class="cont">
+	<form>
+		<label for="id">ID</label><input type="text" id="codigo3"><br>
+		<input style="margin-left: 100px" type="button" id="consultar" value="Consultar">
+	</form>
+	<div>
+		<div style="display: inline-block;">
+			<p class="res">Escala:</p>
+			<p class="res">Grado:</p>
+			<p class="res">Modo:</p>
+			<p class="res">Acorde:</p>
+		</div>
+		<div style="display: inline-block;">
+			<p class="res res2 escala">sdfsdf</p>
+			<p class="res res2 grado">sdfsdf</p>
+			<p class="res res2 modo">sdfsdf</p>
+			<p class="res res2 acorde">sdfsdf</p>
+		</div>
+	</div>
+</div>
+
+<script>
+	const enviar = () => {
+		let escala = document.querySelector("#escala").value;
+		let grado = document.querySelector("#grado").value;
+		let modo = document.querySelector("#modo").value;
+		let acorde = document.querySelector("#acorde").value;
+
+		fetch(`http://localhost:3000/db/enviar?escala=${escala}&grado=${grado}&modo=${modo}&acorde=${acorde}`);
+	}
+
+	const borrar = () => {
+		let id = document.querySelector("#codigo2").value;
+
+		fetch(`http://localhost:3000/db/borrar?id=${id}`);
+	}
+
+	const modificar = () => {
+		let id = document.querySelector("#codigo").value;
+		let escala = document.querySelector("#escala2").value;
+		let grado = document.querySelector("#grado2").value;
+		let modo = document.querySelector("#modo2").value;
+		let acorde = document.querySelector("#acorde2").value;
+
+		fetch(`http://localhost:3000/db/modificar?id=${id}&escala=${escala}&grado=${grado}&modo=${modo}&acorde=${acorde}`);
+	}
+
+	const consultar = () => {
+		let id = document.querySelector("#codigo3").value;
+
+		let escala = document.querySelector(".escala");
+		let grado = document.querySelector(".grado");
+		let modo = document.querySelector(".modo");
+		let acorde = document.querySelector(".acorde");
+
+		fetch(`http://localhost:3000/db/consultar`)
+		.then(res => res.json())
+		.then(res => {
+			res.forEach(obj => {
+				if(id == obj.ID){
+					res_escala = obj.escala;
+					res_grado = obj.grado;
+					res_modo = obj.modo;
+					res_acorde = obj.acorde;
+				};
+			});
+
+			escala.innerHTML = res_escala;
+			grado.innerHTML = res_grado;
+			modo.innerHTML = res_modo;
+			acorde.innerHTML = res_acorde;
+		});
+	};
+
+	document.querySelector("#enviar").addEventListener("click",enviar)
+	document.querySelector("#borrar").addEventListener("click",borrar)
+	document.querySelector("#modificar").addEventListener("click",modificar)	
+	document.querySelector("#consultar").addEventListener("click",consultar)
+
+</script>
