@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<div class="cont">
+	<h1>AsistenciApp</h1>
+	<h2>Lista de asistentes</h2>
+	<p class="lista"></p>
+	<p><a href="index.html">Volver al inicio</a></p>
+</div>
+
+<script>
+	const consulta = () => {
+		asistentes = '';
+
+		fetch(`http://localhost:3000/db/consulta`)
+		.then(res => res.json())
+		.then(res => {
+			res.forEach(obj => {
+				asistentes += obj.nombre + '<br>'
+			});
+			document.querySelector(".lista").innerHTML = asistentes;
+		});
+	};
+
+	window.addEventListener("load",consulta);
+</script>

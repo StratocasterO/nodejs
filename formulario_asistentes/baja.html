@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<div class="cont">
+	<h1>AsistenciApp</h1>
+	<h2>Elimina un asistente</h2>
+	<input type="text">
+	<p><a href="" id="baja">Elimina</a></p>
+	<p><a href="index.html">Volver al inicio</a></p>
+</div>
+
+<script>
+	const baja = () => {
+		texto = document.querySelector("input");
+		let asistente = texto.value;
+		fetch(`http://localhost:3000/db/baja?data=${asistente}`);
+	};
+	document.querySelector("#baja").addEventListener("click",(e) => {
+		e.preventDefault();
+		baja();
+	});
+</script>
