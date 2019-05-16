@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<body>
+	<div class="cont"></div>
+	<div class="equipo">
+		<h2>nombre del equipo</h2>
+		<img src="futbol_img/alaves_team.jpg" alt="">
+		<div>
+			<p class="gris">2 - sdkfjaslf</p>
+			<p>3 - akshfals</p>
+			<p class="gris">2 - sdkfjaslf</p>
+			<p>3 - akshfals</p>
+			<p class="gris">1 - sdkghsldf</p>
+		</div>
+	</div>
+</body>
+
+<script>
+	const mostrar = (codigo) => {
+		const cont = document.querySelector(".equipo");
+
+		fetch(`http://localhost:3000/futbol/equipo?cod=${codigo}`)
+		.then(res => res.json())
+		.then(res => {
+			console.log(res.equipo);
+			res.equipo.forEach(obj => {
+			cont.innerHTML = `<h2>${obj.nombre}</h2><img src="futbol_img/${obj.foto_equipo}"><div></div>`;
+			});
+			res.jugadores.forEach(obj => {
+				cont2.innerHTML =+ `<p>${obj.numero_camiseta} - ${obj.nombre_jugador}</p>`
+			});
+		});
+
+		cont.style.display = "block";
+	};
+
+	const consulta = () => {
+		const cont = document.querySelector(".cont");
+
+		fetch("http://localhost:3000/futbol/inicio")
+		.then(res => res.json())
+		.then(res => {
+			res.forEach(obj => {
+				cont.innerHTML += `<div class="box" onclick="mostrar(${obj.equipo_cod})"><img src="futbol_img/${obj.foto_escudo}"><div>${obj.nombre}<br>${obj.fundacion}<br>${obj.presidente}</div></div>`
+			// el atributo "onclick" llama a la función "mostrar" con el código del equipo como parámetro
+		});
+		});
+	};
+
+	window.addEventListener("load",consulta);
+</script>

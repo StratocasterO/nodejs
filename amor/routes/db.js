@@ -106,7 +106,7 @@ router.get('/baja', function(req, res, next) {
 router.get('/consulta', function(req, res, next) {
 	database.query('SELECT * FROM asistentes', function(error,filas){
 		if(error){            
-			console.log('Se ha producido un error al escribir en la base de datos');
+			console.log('Se ha producido un error al leer la base de datos');
 			return;
 		};    
 		filas = JSON.stringify(filas);
