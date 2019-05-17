@@ -20,7 +20,7 @@ router.get('/inicio', function(req, res, next) {
 router.get('/equipo', function(req, res, next) {
 	const codigo = req.query.cod;
 
-	database.query('SELECT * FROM jugador WHERE ?',{equipo_cod:codigo}, function(error,filas1){
+	database.query('SELECT * FROM jugador WHERE ? ORDER BY numero_camiseta',{equipo_cod:codigo}, function(error,filas1){
 		if(error){            
 			console.log('Se ha producido un error al leer la base de datos');
 			return;
@@ -35,14 +35,25 @@ router.get('/equipo', function(req, res, next) {
 			};
 
 			filas2 = JSON.stringify(filas2);
-			data = {"jugadores": filas1, "equipo": filas2};
-			data = JSON.stringify(data);
-			res.writeHead(200);
-			res.write(data);
-			res.end(); 
+
+			database.query('SELECT * FROM estadio WHERE ?',{equipo_cod:codigo}, function(error,filas3){
+				if(error){            
+					console.log('Se ha producido un error al leer la base de datos');
+					return;
+				};
+
+				filas3 = JSON.stringify(filas3);
+
+				data = {"jugadores": filas1, "equipo": filas2, "estadio": filas3};
+				data = JSON.stringify(data);
+				res.writeHead(200);
+				res.write(data);
+				res.end(); 
+			});
 		});
+
+		console.log("Se ha consultado una entrada de la base de datos");
 	});
-	console.log("Se ha consultado una entrada de la base de datos");
 });
 
 module.exports = router; 

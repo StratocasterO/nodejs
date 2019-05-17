@@ -3,17 +3,7 @@
 
 <body>
 	<div class="cont"></div>
-	<div class="equipo">
-		<h2>nombre del equipo</h2>
-		<img src="futbol_img/alaves_team.jpg" alt="">
-		<div>
-			<p class="gris">2 - sdkfjaslf</p>
-			<p>3 - akshfals</p>
-			<p class="gris">2 - sdkfjaslf</p>
-			<p>3 - akshfals</p>
-			<p class="gris">1 - sdkghsldf</p>
-		</div>
-	</div>
+	<div class="equipo"></div>
 </body>
 
 <script>
@@ -23,16 +13,23 @@
 		fetch(`http://localhost:3000/futbol/equipo?cod=${codigo}`)
 		.then(res => res.json())
 		.then(res => {
-			console.log(res.equipo);
-			res.equipo.forEach(obj => {
-			cont.innerHTML = `<h2>${obj.nombre}</h2><img src="futbol_img/${obj.foto_equipo}"><div></div>`;
+			const equipo = JSON.parse(res.equipo);;
+			const nombre = equipo[0].nombre;
+			const foto_equipo = equipo[0].foto_equipo;
+			cont.innerHTML = `<h2>${nombre}</h2><img src="futbol_img/${foto_equipo}"><div></div>`;
+			
+			const jugadores = JSON.parse(res.jugadores);
+			jugadores.forEach(obj => {
+				cont.innerHTML += `<p>${obj.numero_camiseta} - ${obj.nombre_jugador}</p>`
 			});
-			res.jugadores.forEach(obj => {
-				cont2.innerHTML =+ `<p>${obj.numero_camiseta} - ${obj.nombre_jugador}</p>`
-			});
-		});
 
-		cont.style.display = "block";
+			const estadio = JSON.parse(res.estadio);
+			const nombre_estadio = estadio[0].nombre;
+			const foto = estadio[0].foto_estadio;
+			cont.innerHTML += `<h3>Estadio</h3><h2>${nombre_estadio}</h2><img src="futbol_img/${foto}"><div></div>`;
+
+			cont.style.display = "block";
+		});
 	};
 
 	const consulta = () => {
@@ -50,3 +47,35 @@
 
 	window.addEventListener("load",consulta);
 </script>
+
+
+<!-- CÓDIGO ALTERNATIVO PARA HACER LA PETICIÓN:
+
+<script>
+	const API_URL = 'http://localhost:13289';
+
+	const fetchData = (url, options = {}) => {
+		return fetch(API_URL + url, {
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			...options,
+		}).then(res => res.json())
+	};
+
+	const getJson = (url, params) => {
+		const urlParams = params && Object.entries(params)
+		.reduce((acc, [name, value]) => `${acc}${name}=${value}&` , '?')
+		.slice(0, -1);
+		return fetchData(url + urlParams);
+	};
+
+	const postJson = (url, params) => {
+		return fetchData(url, {
+			method: 'POST',
+			body:JSON.stringify(params)
+		});
+	};
+</script> 
+
+-->

@@ -30,17 +30,17 @@ body{
 	display: block;
 	margin: 5px 0;
 }
-h2{
+h2,h3{
 	text-align: center;
 	margin: 5px;
 }
 .equipo{
 	margin: 25px auto;
-	display: block;
+	display: none;
 	border: 1px solid black;
 	width: 310px;
 	background-color: white;
-	padding-top: 10px;
+	padding: 10px 0;
 }
 .equipo img{
 	margin: 10px 10px;
@@ -53,6 +53,6 @@ h2{
 	margin: 0 10px;
 	padding: 3px 5px;
 }
-.gris{
+.equipo p:nth-child(odd){
 	background-color: lightgray;
 }
