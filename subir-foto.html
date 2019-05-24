@@ -1,0 +1,50 @@
+<input type="file">
+<button id="enviar" >Subir</button><br><br>
+
+<select name="fotos" id="fotos">
+    <option value=""></option>
+</select>
+<button id="foto">Ver foto</button><br><br>
+
+<img id="mostrar" src="" alt="" width="300px">
+
+<script>
+    const addFile=(event)=>{
+        let archivo = document.querySelector('input');
+        const data = archivo.files[0];
+
+        var formData = new FormData();
+        formData.append("userPhoto", data);
+
+        fetch('http://localhost:3000/foto',{
+            method: 'POST',
+            body: formData,
+        });
+    }
+
+    const seleccion=_=>{
+        cont = document.querySelector('#fotos');
+        cont.innerHTML = '';
+
+        fetch("http://localhost:3000/foto/fotos")
+        .then(res => res.json())
+        .then(res => {
+            res.forEach(obj => {
+                name = obj.nombre.substring(13);
+                cont.innerHTML += `<option value="${obj.nombre}">${name}</option>`;
+            });
+        });
+    };
+
+    const mostrar=_=>{
+        document.querySelector('#mostrar').src = "amor/uploads/" + cont.value
+    };
+    
+    window.addEventListener('load', seleccion);
+    document.querySelector('#enviar').addEventListener('click', () => {
+        addFile();
+        setTimeout(()=>{seleccion()},20);
+    });
+
+    document.querySelector('#foto').addEventListener('click', mostrar);
+</script>

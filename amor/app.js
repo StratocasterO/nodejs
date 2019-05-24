@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var ejemplosRouter = require('./routes/ejemplos');
 var dbRouter = require('./routes/db');
 var futbolRouter = require('./routes/db_futbol.js');
+var fotoRouter = require('./routes/foto.js');
 
 var app = express();
 
@@ -24,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // permite el acceso desde cualquier URL (para no hacerlo en cada petición)
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', '*');
   next();
 }); 
 
@@ -34,6 +35,7 @@ app.use('/users', usersRouter);
 app.use('/ejemplos', ejemplosRouter);
 app.use('/db', dbRouter);
 app.use('/futbol', futbolRouter);
+app.use('/foto', fotoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
