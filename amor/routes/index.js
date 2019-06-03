@@ -71,4 +71,25 @@ router.get('/escalas4', function(req, res, next) {
 	res.end(); 
 });
 
+// código para hacer un login desde React:
+const jwt = require('jsonwebtoken');
+const SECRET = 'test'; // seed de la encriptación
+
+router.post('/login', function(req, res, next) {
+	const userName = req.body.userName;
+	const password = req.body.password;
+	if(userName === "pablo" && password === "monteserin"){
+		const idRecuperadaDeLaBaseDeDatos = 1;
+		const token = jwt.sign({ idRecuperadaDeLaBaseDeDatos }, SECRET);
+		res.send({token});
+	} else{
+		res.send(403)
+	}
+});
+
+router.get('/user-data', function(req, res, next) {
+	const tokenData = jwt.verify(req.header('accessToken'), SECRET);
+	res.send(tokenData);
+});
+
 module.exports = router;

@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // permite el acceso desde cualquier URL (para no hacerlo en cada petición)
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, accesstoken");
   next();
 }); 
 
