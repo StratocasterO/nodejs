@@ -83,7 +83,7 @@ router.post('/login', function(req, res, next) {
 		const token = jwt.sign({ idRecuperadaDeLaBaseDeDatos }, SECRET);
 		res.send({token});
 	} else{
-		res.send(403)
+		res.send({codigo: 403})
 	}
 });
 
