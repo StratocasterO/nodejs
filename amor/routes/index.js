@@ -80,7 +80,7 @@ router.post('/login', function(req, res, next) {
 	const password = req.body.password;
 	if(userName === "pablo" && password === "monteserin"){
 		const idRecuperadaDeLaBaseDeDatos = 1;
-		const token = jwt.sign({ idRecuperadaDeLaBaseDeDatos }, SECRET);
+		const token = jwt.sign({idRecuperadaDeLaBaseDeDatos}, SECRET);
 		res.send({token});
 	} else{
 		res.send({codigo: 403})
@@ -88,7 +88,8 @@ router.post('/login', function(req, res, next) {
 });
 
 router.get('/user-data', function(req, res, next) {
-	const tokenData = jwt.verify(req.header('accessToken'), SECRET);
+	console.log(req)
+	const tokenData = jwt.verify(req.header('accesstoken'), SECRET);
 	res.send(tokenData);
 });
 
