@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
 var conexion = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'',
-    database:'amor_database'
+    host:'eu-cdbr-west-02.cleardb.net',
+    user:'b7113323d68164',
+    password:'29fbc5df',
+    database:'heroku_533b07f30470a41'
 });
 
 conexion.connect(function (error){
