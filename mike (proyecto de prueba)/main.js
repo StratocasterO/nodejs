@@ -1,4 +1,4 @@
-let mat=require('./aritmetica');
+let mat=require('./aritmetica'); // This calls the library in file aritmetica.js
 
 console.log('La división de 8 entre 4 es '+mat.dividir(8,4));
 console.log('El valor de PI es '+mat.PI);
